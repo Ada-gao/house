@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/counter/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "交易平台",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "#272636",
+    "selectedColor": "#FFD161",
+    "backgroundColor": "#fff",
+    "borderStyle": "#a8a8a8",
+    "list": [
+      {
+        "pagePath": "pages/index/main",
+        "iconPath": "static/images/home.png",
+        "selectedIconPath": "static/images/home-selected.png",
+        "color": "white",
+        "text": "交易平台"
+      },
+      {
+        "pagePath": "pages/logs/main",
+        "iconPath": "static/images/order.png",
+        "selectedIconPath": "static/images/order-selected.png",
+        "text": "服务说明"
+      },
+      {
+        "pagePath": "pages/counter/main",
+        "iconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my-selected.png",
+        "text": "个人中心"
+      }
+    ]
+  }
+}
