@@ -2,7 +2,14 @@
   "pages": [
     "pages/index/main",
     "pages/logs/main",
-    "pages/counter/main"
+    "pages/counter/main",
+    "pages/secHand/main",
+    "pages/test/main",
+    "pages/detail/main",
+    "pages/newHouse/main",
+    "pages/newDetail/main",
+    "pages/entrust/main",
+    "pages/buyHouse/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
