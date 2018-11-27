@@ -1,5 +1,4 @@
 <template>
-
   <div class="sort-list">
     <div class="sort" @click="onOverallTag">区域{{sortSelected}}
       <image src="/static/images/down.png" style="width:20rpx;height:20rpx;"/></div>
@@ -14,6 +13,15 @@
 <script>
 
 export default {
+  data () {
+    return {
+
+    }
+  },
+  props: ['sortList'],
+  mounted () {
+    console.log(this.sortList)
+  }
 }
 </script>
 

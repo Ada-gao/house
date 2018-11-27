@@ -1,19 +1,19 @@
 <template>
   <div class="container">
     <!-- 综合排序 -->
-    <div class="mask" v-show="isHidden" @click="mask1Cancel">
-      <sortList></sortList>
+    <div class="mask" v-if="isHidden && fromName !== '我的'" @click="mask1Cancel">
+      <sortList :sortData="sortList"></sortList>
       <div class="overall-sort-list">
         <div v-for="(item,index) in sortList" :key="index">
           <div class="overall-sort" @click="sortSelected">{{item.sort}}</div>
         </div> 
       </div>
     </div>
-    <div class="search">
+    <div class="search" v-if="fromName !== '我的'">
       <icon class="search_icon" type="search"></icon>
       <input class="search_input" type="text" placeholder="请输入小区">
     </div>
-    <div class="select">
+    <div class="select" v-if="fromName !== '我的'">
       <div class="sort-list">
         <div class="sort" @click="onOverallTag">区域{{sortSelected}}
         <image src="/static/images/down.png" style="width:20rpx;height:20rpx;"/></div>
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <productList></productList>
+    <productList :from-name="fromName"></productList>
   </div>
 </template>
 
@@ -54,7 +54,8 @@ export default {
         }
       ],
       isHidden: false,
-      selected: null
+      selected: null,
+      fromName: ''
     }
   },
 
@@ -91,7 +92,19 @@ export default {
       })
     }
   },
-
+  onLoad (options) {
+    this.fromName = options.from
+    if (options.from.includes('租房')) {
+      wx.setNavigationBarTitle({
+        title: '租房'
+      })
+      this.sortList = '租房搜索'
+    } else if (options.from.includes('我的')) {
+      wx.setNavigationBarTitle({
+        title: '我的房子'
+      })
+    }
+  },
   created () {
     // 调用应用实例的方法获取全局数据
   }
@@ -113,6 +126,7 @@ export default {
       left 55rpx
       top 50%
       transform translateY(-50%)
+      font-size 28rpx
     .search_input
       border 1rpx solid #ccc
       border-radius 50rpx

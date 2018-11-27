@@ -3,7 +3,7 @@
     <div class="recommend_item"
       v-for="(item, index) in recommendList"
       :key="index"
-      @click="handleDetail">
+      @click="handleDetail(item)">
       <div class="left_img">
         <img class="left_img" :src="item.imgSrc" alt="">
       </div>
@@ -44,7 +44,7 @@ export default {
           averagePrice: '50000'
         }, {
           imgSrc: '/static/images/default.jpg',
-          houseType: '合生广富汇',
+          houseType: '合生广富汇-1',
           saleStatus: '售完',
           houseSize: '松江 - 松江新城',
           address: '',
@@ -56,8 +56,8 @@ export default {
     }
   },
   methods: {
-    handleDetail () {
-      wx.navigateTo({url: '/pages/newDetail/main'})
+    handleDetail (item) {
+      wx.navigateTo({url: '/pages/newDetail/main?house=' + item.houseType})
     }
   }
 }

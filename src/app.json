@@ -1,15 +1,18 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/logs/main",
-    "pages/counter/main",
+    "pages/service/main",
+    "pages/personal/main",
     "pages/secHand/main",
     "pages/test/main",
     "pages/detail/main",
     "pages/newHouse/main",
     "pages/newDetail/main",
     "pages/entrust/main",
-    "pages/buyHouse/main"
+    "pages/buyHouse/main",
+    "pages/buyExpert/main",
+    "pages/findList/main",
+    "pages/poster/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -31,13 +34,13 @@
         "text": "交易平台"
       },
       {
-        "pagePath": "pages/logs/main",
+        "pagePath": "pages/service/main",
         "iconPath": "static/images/order.png",
         "selectedIconPath": "static/images/order-selected.png",
         "text": "服务说明"
       },
       {
-        "pagePath": "pages/counter/main",
+        "pagePath": "pages/personal/main",
         "iconPath": "static/images/my.png",
         "selectedIconPath": "static/images/my-selected.png",
         "text": "个人中心"

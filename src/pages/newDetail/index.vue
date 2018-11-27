@@ -25,8 +25,24 @@
         </div>
       </div>
     </div>
-    <h5 class="recommend_title">主力户型（4套）</h5>
-    <h5 class="recommend_title">位置及周边</h5>
+    <h5 class="recommend_title mb-20">主力户型（4套）</h5>
+    <div class="houseTypes">
+      <div v-for="(item,index) in houseTypes" class="item" :key="index">
+        <image :src="item.src" class="item-img"/>
+        <div class="text1">{{item.name}}</div>
+        <div class="text2">{{item.type}}</div>
+      </div>
+    </div>
+    <h5 class="recommend_title mb-20">位置及周边</h5>
+    <map 
+      id="map" 
+      :markers="markers" 
+      scale="14"
+      latitude="23.099994"
+      longitude="113.324520"
+      show-location 
+      style="width: 100%; height: 300rpx">
+    </map>
     <h5 class="recommend_title">为你推荐</h5>
     <productList></productList>
     <div class="footer">
@@ -50,13 +66,47 @@ export default {
         upDate: '2018-09',
         company: '上海合生锦廷房地产开发有限公司',
         tags: ['小洋房']
-      }
+      },
+      markers: [{
+        iconPath: '/resources/others.png',
+        id: 0,
+        latitude: 23.099994,
+        longitude: 113.324520,
+        width: 50,
+        height: 50
+      }],
+      houseTypes: [
+        {
+          src: '/static/images/house.png',
+          name: '北入门A1',
+          type: '4室4厅5卫'
+        },
+        {
+          src: '/static/images/house.png',
+          name: '北入门A1',
+          type: '4室4厅5卫'
+        },
+        {
+          src: '/static/images/house.png',
+          name: '北入门A1',
+          type: '4室4厅5卫'
+        },
+        {
+          src: '/static/images/house.png',
+          name: '北入门A1',
+          type: '4室4厅5卫'
+        }
+      ]
     }
   },
-
   components: {
     'swiper': swiper,
     productList
+  },
+  onLoad (options) {
+    wx.setNavigationBarTitle({
+      title: options.house
+    })
   }
 }
 </script>
@@ -72,10 +122,9 @@ export default {
     padding 30rpx 0
     p
       font-size 32rpx
-    .red {
+    .red
       color rgb(206 62 20)
       display inline
-    }
   .houseInfo
     display flex
     padding 30rpx 0
@@ -108,29 +157,21 @@ export default {
   font-weight bold
   text-align left
   width 100%
-.footer
+.houseTypes
   display flex
-  position fixed
-  bottom 0
+  justify-content space-around
   width 100%
-  font-size 32rpx
-  height 100rpx
-  line-height 100rpx
-  p
-    flex 3
-    border-top 1rpx solid #ccc
-    padding-left 30rpx
-    background-color #fff
-    i
-      color rgb(120 120 120)
-      display inline
-      margin-left 20rpx
-  button
+  .item
     flex 1
-    background-color #ce3e14
-    color #ffffff
-    border-radius 0
-    border none
-    line-height 100rpx
+    text-align center
+    .item-img
+      width 144rpx
+      height 144rpx
+    .text1
+      font-size 30rpx
+    .text2
+      font-size 26rpx
+      color #787878
+
 </style>
 

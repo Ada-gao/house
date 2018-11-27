@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="main">
-      <div class="weui-cells__title">房产信息</div>
+      <!-- <div class="weui-cells__title">房产信息</div> -->
       <div class="weui-cells weui-cells_after-title">
         <div class="weui-cell weui-cell_input">
           <div class="weui-cell__hd">
@@ -26,7 +26,8 @@
           <div class="weui-cell__bd">
             <input class="weui-input" placeholder=" " />
           </div>
-          <div class="weui-cell__hd">
+          <div class="weui-cell__hd position-r">
+            <i class="split-line"></i>
             <div class="weui-label">房门号</div>
           </div>
           <div class="weui-cell__bd">
@@ -49,7 +50,8 @@
           <div class="weui-cell__bd">
             <input class="weui-input" placeholder=" " />
           </div>
-          <div class="weui-cell__hd">
+          <div class="weui-cell__hd position-r">
+            <i class="split-line"></i>
             <div class="weui-label">户型</div>
           </div>
           <div class="weui-cell__bd">
@@ -95,9 +97,14 @@
             <div class="weui-label w330">什么时候方便接听电话</div>
           </div>
           <div class="weui-cell__bd">
-            <picker mode="time" value="time" start="09:01" end="21:01" @change="bindTimeChange">
+            <picker mode="time"
+              :value="time"
+              start="09:01"
+              end="21:01"
+              @change="bindTimeChange">
               <div class="weui-input">{{time}}</div>
             </picker>
+            <!-- <picker mode="date" :value="date" start="2015-09-01" end="2017-09-01" @change="bindDateChange"> <view class="picker"> 当前选择: {{date}} </view> </picker> -->
           </div>
         </div>
       </div>
@@ -133,13 +140,20 @@ export default {
         decoration: '精装',
         update: '2018年',
         tags: ['新增房源', '满2年']
-      }
+      },
+      time: ''
     }
   },
-
   components: {
     'swiper': swiper,
     productList
+  },
+  methods: {
+    bindTimeChange (e) {
+      // console.log(e)
+      this.time = e.target.value
+      console.log(this.time)
+    }
   }
 }
 </script>
@@ -149,8 +163,21 @@ export default {
   width 100%
   padding 0 30rpx 130rpx
   box-sizing border-border-box
+  .position-r {
+    position relative
+  }
+  .split-line {
+    position absolute
+    width 4rpx
+    height 100%
+    background-color rgb(230 230 230)
+    left -30rpx
+  }
   .weui-cells
     font-size 32rpx
+    .weui-cell
+      height 124rpx
+      box-sizing border-box
     .weui-cell_input
       padding-top 20rpx
       padding-bottom 20rpx
@@ -158,12 +185,6 @@ export default {
         width 330rpx
       .weui-cell__bd
         text-align right
-  .submit-btn
-    background-color #ce3e14
-    margin 60rpx 30rpx
-    border-radius 50rpx
-    height 100rpx
-    line-height 100rpx
   .radio-btn
     background-color rgb(230 230 230)
     display inline
@@ -172,29 +193,4 @@ export default {
     outline-style none
     color rgb(120 120 120)
     margin-left 30rpx
-.footer
-  display flex
-  position fixed
-  bottom 0
-  width 100%
-  font-size 32rpx
-  height 100rpx
-  line-height 100rpx
-  p
-    flex 3
-    border-top 1rpx solid #ccc
-    padding-left 30rpx
-    background-color #fff
-    i
-      color rgb(120 120 120)
-      display inline
-      margin-left 20rpx
-  button
-    flex 1
-    background-color #ce3e14
-    color #ffffff
-    border-radius 0
-    border none
-    line-height 100rpx
 </style>
-

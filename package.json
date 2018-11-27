@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "mpvue": "^1.0.11",
+    "upng": "^1.0.1",
     "vuex": "^3.0.1",
+    "weapp-qrcode": "^0.9.0",
     "weui": "^1.1.3"
   },
   "devDependencies": {

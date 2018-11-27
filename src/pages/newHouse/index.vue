@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- 综合排序 -->
-    <div class="mask" v-show="isHidden" @click="mask1Cancel">
+    <div class="mask" v-if="isHidden" @click="mask1Cancel">
       <sortList></sortList>
       <div class="overall-sort-list">
         <div v-for="(item,index) in sortList" :key="index">

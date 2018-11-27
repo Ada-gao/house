@@ -2,7 +2,7 @@
   <!-- <swiper class="categoryList" :autoplay="true" :circular="true" :indicator-dots="true" indicator-color="rgba(228,228,228,1)" indicator-active-color="#FECA49"> -->
     <!-- <swiper-item v-for="(items,i) in categoryList" :key="i"> -->
     <div class="categoryList">
-      <div v-for="(item,index) in categoryList.pageone" class="category-info" :key="index" @click="choose(item.link)">
+      <div v-for="(item,index) in categoryList.pageone" class="category-info" :key="index" @click="choose(item)">
         <image :src="item.src"  classs="category-image"/>
         <div class="category-text">{{item.name}}</div>
       </div>
@@ -41,8 +41,10 @@ export default {
     }
   },
   methods: {
-    choose (url) {
-      wx.navigateTo({url})
+    choose (item) {
+      wx.navigateTo({
+        url: `${item.link}?from=${item.name}`
+      })
       // wx.showToast({
       //   title: '代完善',
       //   icon: 'success',
@@ -73,7 +75,4 @@ export default {
                 font-size 25rpx
                 width 100%
                 line-height 30rpx
-
-
-
 </style>

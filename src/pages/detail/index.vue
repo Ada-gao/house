@@ -8,8 +8,8 @@
       </div>
       <div class="houseInfo split">
         <div class="threeParam">
-          <p class="paramTitle">售价</p>
-          <p class="paramData">{{pData.totalPrice}}万元</p>
+          <p class="paramTitle">{{isRent ? '租价' : '售价'}}</p>
+          <p class="paramData">{{pData.totalPrice}}{{isRent ? '元/月' : '万元'}}</p>
         </div>
         <div class="threeParam">
           <p class="paramTitle">户型</p>
@@ -42,10 +42,19 @@
         </div>
       </div>
     </div>
-    <h5 class="recommend_title">位置及周边</h5>
-    <h5 class="recommend_title">为你推荐</h5>
-    <productList></productList>
-    <div class="footer">
+    <h5 class="recommend_title mb-20">位置及周边</h5>
+    <map 
+      id="map" 
+      :markers="markers" 
+      scale="14"
+      latitude="23.099994"
+      longitude="113.324520"
+      show-location 
+      style="width: 100%; height: 300rpx">
+    </map>
+    <h5 class="recommend_title" v-if="showRecommand">为你推荐</h5>
+    <productList v-if="showRecommand"></productList>
+    <div class="footer" v-if="showRecommand">
       <p>某某某<i>经纪人</i></p>
       <button>电话联系</button>
     </div>
@@ -73,10 +82,28 @@ export default {
         decoration: '精装',
         update: '2018年',
         tags: ['新增房源', '满2年']
-      }
+      },
+      markers: [{
+        // iconPath: '/resources/others.png',
+        id: 0,
+        latitude: 23.099994,
+        longitude: 113.324520,
+        width: 50,
+        height: 50
+      }],
+      isRent: false,
+      showRecommand: true
     }
   },
-
+  onLoad (options) {
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
+    this.isRent = true
+    if (options.from.includes('我的')) {
+      this.showRecommand = false
+    }
+  },
   components: {
     'swiper': swiper,
     productList
@@ -127,29 +154,5 @@ export default {
   font-weight bold
   text-align left
   width 100%
-.footer
-  display flex
-  position fixed
-  bottom 0
-  width 100%
-  font-size 32rpx
-  height 100rpx
-  line-height 100rpx
-  p
-    flex 3
-    border-top 1rpx solid #ccc
-    padding-left 30rpx
-    background-color #fff
-    i
-      color rgb(120 120 120)
-      display inline
-      margin-left 20rpx
-  button
-    flex 1
-    background-color #ce3e14
-    color #ffffff
-    border-radius 0
-    border none
-    line-height 100rpx
 </style>
 

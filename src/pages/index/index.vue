@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="top">
-      <img class="mainImg" src="/static/images/main.jpg" alt="">
+      <img class="mainImg" :src="imgSrc" alt="">
       <div class="search">
         <div class="sort"></div>
         <input class="inputing" type="text" placeholder="请输入小区名">
@@ -64,8 +64,8 @@ import swiper from '@/components/swiper/swiper'
 export default {
   data () {
     return {
-      motto: 'Hello World',
       userInfo: {},
+      imgSrc: '/static/images/main.jpg',
       grids: [0, 1, 2, 3, 4, 5, 6, 7, 8],
       sortList: [
         {
@@ -127,7 +127,7 @@ export default {
     },
     onFilter () {
       wx.showToast({
-        title: '代完善',
+        title: '待完善',
         icon: 'success',
         duration: 2000
       })

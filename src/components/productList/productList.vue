@@ -3,7 +3,7 @@
     <div class="recommend_item"
       v-for="(item, index) in recommendList"
       :key="index"
-      @click="handleDetail">
+      @click="handleDetail(item)">
       <div class="left_img">
         <img class="left_img" :src="item.imgSrc" alt="">
       </div>
@@ -27,6 +27,12 @@
 
 <script>
 export default {
+  props: {
+    fromName: {
+      type: String,
+      default: '二手房'
+    }
+  },
   data () {
     return {
       recommendList: [
@@ -40,7 +46,7 @@ export default {
           averagePrice: '50000元/㎡'
         }, {
           imgSrc: '/static/images/default.jpg',
-          houseType: '大江苑 3居 朝南 电梯房',
+          houseType: '大江苑-1 3居 朝南 电梯房',
           houseSize: '3室2厅2卫 100平 24/26F',
           address: '大江苑',
           houseTag: ['新增房源', '满2年'],
@@ -48,7 +54,7 @@ export default {
           averagePrice: '50000元/㎡'
         }, {
           imgSrc: '/static/images/default.jpg',
-          houseType: '大江苑 3居 朝南 电梯房',
+          houseType: '大江苑-2 3居 朝南 电梯房',
           houseSize: '3室2厅2卫 100平 24/26F',
           address: '大江苑',
           houseTag: ['新增房源', '满2年'],
@@ -56,7 +62,7 @@ export default {
           averagePrice: '50000元/㎡'
         }, {
           imgSrc: '/static/images/default.jpg',
-          houseType: '大江苑 3居 朝南 电梯房',
+          houseType: '大江苑-3 3居 朝南 电梯房',
           houseSize: '3室2厅2卫 100平 24/26F',
           address: '大江苑',
           houseTag: ['新增房源', '满2年'],
@@ -64,7 +70,7 @@ export default {
           averagePrice: '50000元/㎡'
         }, {
           imgSrc: '/static/images/default.jpg',
-          houseType: '大江苑 3居 朝南 电梯房',
+          houseType: '大江苑-4 3居 朝南 电梯房',
           houseSize: '3室2厅2卫 100平 24/26F',
           address: '大江苑',
           houseTag: ['新增房源', '满2年'],
@@ -72,7 +78,7 @@ export default {
           averagePrice: '50000元/㎡'
         }, {
           imgSrc: '/static/images/default.jpg',
-          houseType: '大江苑 3居 朝南 电梯房',
+          houseType: '大江苑-5 3居 朝南 电梯房',
           houseSize: '3室2厅2卫 100平 24/26F',
           address: '大江苑',
           houseTag: ['新增房源', '满2年'],
@@ -80,7 +86,7 @@ export default {
           averagePrice: '50000元/㎡'
         }, {
           imgSrc: '/static/images/default.jpg',
-          houseType: '大江苑 3居 朝南 电梯房',
+          houseType: '大江苑-6 3居 朝南 电梯房',
           houseSize: '3室2厅2卫 100平 24/26F',
           address: '大江苑',
           houseTag: ['新增房源', '满2年'],
@@ -91,8 +97,9 @@ export default {
     }
   },
   methods: {
-    handleDetail () {
-      wx.navigateTo({url: '/pages/detail/main'})
+    handleDetail (item) {
+      console.log(item.houseType)
+      wx.navigateTo({url: `/pages/detail/main?title=${item.houseType}&from=${this.fromName}`})
     }
   }
 }
